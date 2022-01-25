@@ -1,23 +1,18 @@
 #include "Student.h"
 #include <cstring>
 
-Student::Student(char* newName){
-strcpy(newName,name);
+Student::Student(){
 }
 
 Student::~Student(){
 
 }
 
-void Student::setGPA(float newGPA){
-    GPA = newGPA;
+float Student::getGPA(){
+    return GPA;
 }
 
-char* Student::getName(){
-    return name;
+int Student::getID(){
+    return ID;
 }
 
-
-Student* getStudent(){
-
-}

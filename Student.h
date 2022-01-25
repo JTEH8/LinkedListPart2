@@ -9,16 +9,19 @@ using namespace std;
 class Student{
 public:
 //Variables
-char name[100];
+char firstName[100];
+char lastName[100];
+int ID;
 float GPA;
 //Constructor
-Student(char* newName);
+Student();
 //Destructor
 ~Student();
 //Set GPA
-void setGPA(float newGPA);
+int getID();
+float getGPA();
 //Return the Student's name
-char* getName();
+char* getFirstName();
 };
 
 #endif
