@@ -52,7 +52,6 @@ if(strcmp(input, "QUIT") == 0){
 }
 
 void add(Node* head, Student* newStudent){
-    char temp[100];
     if(head == NULL){
         head = new Node(newStudent);
         return;
@@ -61,31 +60,31 @@ void add(Node* head, Student* newStudent){
     Node* temp = new Node(newStudent);
     if(head->getStudent()->getID() > newStudent->ID){
         temp->setNext(head);
-        head = temp;
+        head=temp;
     }
     else{
     head->setNext(temp);    
     }
+    return;
     }
-    }
-    /*
-        while(currentNode->getNext() != NULL){
-            current = currentNode->getNext();
+
+    if(head->getStudent()->getID() > newStudent->ID){
+        Node* temp2 = new Node(newStudent);
+        temp2->setNext(head);
+        temp2->setNext(head->getNext());
+        head->setNext(temp2);
+        return;
         }
-        current->setNext(new Node());
-        current->getNext()->setValue(newValue);
+    Node* called = head->getNext();
+    add(called, newStudent);    
     }
-}
-*/
-void print (Node* currentNode,Node* next){
-    if(currentNode == next){
-        cout << "Student List: " ;
+void print(Node* next, Node* head){
+    if(next == head){
+    cout << "Students: " << endl;
     }
-    if(next != NULL){
-        cout << next->getValue() << " ";
-        print(next->getNext(),next->getNext());
-    }else{
-    //go running
-} 
+    while(next != NULL){
+    cout << next->getStudent()->firstName;
+    cout << " " << next->getStudent()-> lastName;
+    }
 }
 
