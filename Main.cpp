@@ -68,7 +68,7 @@ void add(Node* head, Student* newStudent){
     }
     }
     }
-    else{
+    /*
         while(currentNode->getNext() != NULL){
             current = currentNode->getNext();
         }
@@ -76,7 +76,7 @@ void add(Node* head, Student* newStudent){
         current->getNext()->setValue(newValue);
     }
 }
-
+*/
 void print (Node* currentNode,Node* next){
     if(currentNode == next){
         cout << "Student List: " ;
