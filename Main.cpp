@@ -6,8 +6,8 @@
 using namespace std;
 void add(Node* head, Student* newStudent);
 void print(Node* next, Node* head);
-void deleteStudent(Node* next, Node* head);
-void average(Node* next, Node* head, float &sum, int &nodeCount);
+void deleteStudent(Node* next, Node* head, int id, Node* previous);
+void average(Node* head, float &sum, int &nodeCount);
 
 int main(){
 Node* head = NULL;
@@ -31,7 +31,10 @@ if(strcmp(input, "ADD") == 0){
     add(head, s);
 }
 if(strcmp(input, "DELETE") == 0){
-    deleteStudent(head, head);
+    int input = 0;
+    cout << "Enter the student ID of the student you're deleting" << endl;
+    cin >> input;
+    deleteStudent(head, head, input, NULL);
 }
 if(strcmp(input, "PRINT") == 0){
     print(head, head);
@@ -40,7 +43,7 @@ if(strcmp(input, "PRINT") == 0){
 if(strcmp(input, "AVERAGE") == 0){
     float sum = 0;
     int nodeCount = 0;
-    average(head, head, sum, nodeCount);
+    average(head, sum, nodeCount);
     cout << setprecision(2) << (float)(sum/nodeCount) << endl;
 }
 if(strcmp(input, "QUIT") == 0){
@@ -80,11 +83,42 @@ void add(Node* head, Student* newStudent){
     }
 void print(Node* next, Node* head){
     if(next == head){
-    cout << "Students: " << endl;
+        cout << "Students: " << endl;
     }
-    while(next != NULL){
-    cout << next->getStudent()->firstName;
-    cout << " " << next->getStudent()-> lastName;
+    if(next != NULL){
+        cout << next->getStudent()->firstName;
+        cout << " " << next->getStudent()-> lastName;
+        cout << " " << next->getStudent()->getID();
+        cout << " " << setprecision(2) << next->getStudent()->getGPA() << endl;
+    print(next->getNext(), head);
+}
+}
+
+void deleteStudent(Node* next, Node* head, int id, Node* previous){
+        if(next->getStudent()->getID() == id){
+            if(previous == NULL){
+                head = next->getNext();
+            }
+            else{
+            previous->setNext(next->getNext()); 
+            }
+            delete next;
+            return;
+        }
+        else if(next->getNext() != NULL){
+            delete(next->getNext(), head, id, next);
+        }
+}
+void average(Node* head, float &sum, int &nodeCount){
+    if(head!= NULL){
+    sum+=head->getStudent()->getGPA();
+    nodeCount++;
+    if(head->getNext() != NULL){
+        average(head, sum, nodeCount);
+    }
     }
 }
+
+
+
 
