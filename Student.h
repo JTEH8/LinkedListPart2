@@ -14,7 +14,7 @@ char lastName[100];
 int ID;
 float GPA;
 //Constructor
-Student();
+Student(char* firstname, char* lastname, int id, float gpa);
 //Destructor
 ~Student();
 //Set GPA
@@ -22,6 +22,7 @@ int getID();
 float getGPA();
 //Return the Student's name
 char* getFirstName();
+char* getLastName();
 };
 
 #endif
